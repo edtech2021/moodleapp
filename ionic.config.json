@@ -1,10 +1,10 @@
 {
-  "name": "moodlemobile",
+  "name": "edtechsmobile",
   "integrations": {
     "cordova": {},
     "gulp": {}
   },
   "type": "ionic-angular",
   "watchPatterns": [],
-  "id": "com.moodle.moodlemobile"
+  "id": "com.edtechs.edtechsmobile"
 }

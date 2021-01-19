@@ -1,10 +1,10 @@
 {
-  "name": "moodlemobile",
+  "name": "edtechsmobile",
   "version": "3.9.4",
-  "description": "The official app for Moodle.",
+  "description": "EdTechs App",
   "author": {
-    "name": "Moodle Pty Ltd.",
-    "email": "mobile@moodle.com"
+    "name": "EdTechs Academy",
+    "email": "edtechacademy2021@gmail.com"
   },
   "config": {
     "ionic_webpack": "./config/webpack.config.js",

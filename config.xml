@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="39400" id="com.moodle.moodlemobile" ios-CFBundleVersion="3.9.4.0" version="3.9.4" versionCode="39400" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Moodle</name>
-    <description>Moodle official app</description>
-    <author email="mobile@moodle.com" href="http://moodle.com">Moodle Mobile team</author>
+<widget android-versionCode="39400" id="com.edtechs.edtechsmobile" ios-CFBundleVersion="3.9.4.0" version="3.9.4" versionCode="39400" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>EdTechs</name>
+    <description>EdTechs app</description>
+    <author email="edtechacademy2021@gmail.com" href="http://edtechs.academy">EdTechs team</author>
     <content src="index.html" />
     <access origin="*" />
     <access launch-external="yes" origin="tel:*" />
@@ -27,7 +27,7 @@
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="prerendered-icon" value="true" />
-    <preference name="AppendUserAgent" value="MoodleMobile" />
+    <preference name="AppendUserAgent" value="EdTechMobile" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
@@ -225,25 +225,25 @@
     </platform>
     <platform name="ios">
         <resource-file src="GoogleService-Info.plist" />
-        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+        <edit-config mode="merge" parent="NSLocationWhenInUseUsageDescription" target="*-Info.plist">
             <string>We need your location so you can attach it as part of your submissions.</string>
         </edit-config>
-        <edit-config file="*-Info.plist" mode="merge" target="NSLocationAlwaysUsageDescription">
+        <edit-config mode="merge" parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
             <string>We need your location so you can attach it as part of your submissions.</string>
         </edit-config>
-        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+        <edit-config mode="merge" parent="NSCameraUsageDescription" target="*-Info.plist">
             <string>We need camera access to take pictures so you can attach them as part of your submissions.</string>
         </edit-config>
-        <edit-config file="*-Info.plist" mode="merge" target="NSMicrophoneUsageDescription">
+        <edit-config mode="merge" parent="NSMicrophoneUsageDescription" target="*-Info.plist">
             <string>We need microphone access to record sounds so you can attach them as part of your submissions.</string>
         </edit-config>
-        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+        <edit-config mode="merge" parent="NSPhotoLibraryUsageDescription" target="*-Info.plist">
             <string>We need photo library access to get pictures from there so you can attach them as part of your submissions.</string>
         </edit-config>
-        <edit-config file="*-Info.plist" mode="merge" target="UISupportsDocumentBrowser">
+        <edit-config mode="merge" parent="UISupportsDocumentBrowser" target="*-Info.plist">
             <true />
         </edit-config>
-        <edit-config file="*-Info.plist" mode="merge" target="CFBundleShortVersionString">
+        <edit-config mode="merge" parent="CFBundleShortVersionString" target="*-Info.plist">
             <string>3.9.4</string>
         </edit-config>
         <config-file parent="FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED" target="*-Info.plist">
