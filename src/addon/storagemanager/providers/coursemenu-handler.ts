@@ -43,7 +43,7 @@ export class AddonStorageManagerCourseMenuHandler implements CoreCourseOptionsMe
      * @return Whether or not the handler is enabled on a site level.
      */
     isEnabled(): boolean | Promise<boolean> {
-        return true;
+        return false;
     }
 
     /**

@@ -40,7 +40,7 @@
     "faqwhatisurlquestion": "What is my site address? How can I find my site URL?",
     "faqwhereisqrcode": "Where can I find the QR code?",
     "faqwhereisqrcodeanswer": "<p>If your organisation has enabled it, you will find a QR code on the web site at the bottom of your user profile page.</p>{{$image}}",
-    "findyoursite": "Find your site",
+    "findyoursite": "Find your Instructor",
     "firsttime": "Is this your first time here?",
     "forcepasswordchangenotice": "You must change your password to proceed.",
     "forgotten": "Forgotten your username or password?",

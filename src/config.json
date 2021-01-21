@@ -25,11 +25,7 @@
         93.75
     ],
     "customurlscheme": "moodlemobile",
-    "siteurl": [
-        { "name": "Shahira", "url": "https://shahira.edtechs.academy/", "alias": "17", "city": "LA", "countrycode": "ES", "imageurl": "https://moodle.org/theme/image.php/moodleorg/theme_moodleorg/1604934910/moodle_logo_small" }
-        
-     
-        ],
+    "siteurl": "",
     "sitename": "EdTechs Academy",
     "multisitesdisplay": "list",
     "sitefindersettings": {},

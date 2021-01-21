@@ -655,7 +655,8 @@ export class CoreSitesProvider {
     siteExists(siteUrl: string): Promise<void> {
         return this.http.post(siteUrl + '/login/token.php', { appsitecheck: 1 }).
                 timeout(this.wsProvider.getRequestTimeout()).toPromise()
-                .catch(() => {
+                .catch((err) => {
+                  
             // Default error messages are kinda bad, return our own message.
             return Promise.reject({error: this.translate.instant('core.cannotconnecttrouble')});
         }).then((data: any) => {

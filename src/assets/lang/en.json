@@ -1775,7 +1775,7 @@
     "core.login.faqwhatisurlquestion": "What is my site address? How can I find my site URL?",
     "core.login.faqwhereisqrcode": "Where can I find the QR code?",
     "core.login.faqwhereisqrcodeanswer": "<p>If your organisation has enabled it, you will find a QR code on the web site at the bottom of your user profile page.</p>{{$image}}",
-    "core.login.findyoursite": "Find your site",
+    "core.login.findyoursite": "Find your Instructor",
     "core.login.firsttime": "Is this your first time here?",
     "core.login.forcepasswordchangenotice": "You must change your password to proceed.",
     "core.login.forgotten": "Forgotten your username or password?",

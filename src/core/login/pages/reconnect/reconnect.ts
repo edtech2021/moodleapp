@@ -70,7 +70,7 @@ export class CoreLoginReconnectPage {
         this.siteConfig = navParams.get('siteConfig');
         this.siteUrl = navParams.get('siteUrl');
         this.siteId = navParams.get('siteId');
-
+                
         this.isLoggedOut = currentSite && currentSite.isLoggedOut();
         this.credForm = fb.group({
             password: ['', Validators.required]
@@ -84,7 +84,7 @@ export class CoreLoginReconnectPage {
         if (this.siteConfig) {
             this.getDataFromConfig(this.siteConfig);
         }
-
+        
         this.sitesProvider.getSite(this.siteId).then((site) => {
             this.site = {
                 id: site.id,
@@ -96,12 +96,13 @@ export class CoreLoginReconnectPage {
             this.siteUrl = site.infos.siteurl;
             this.siteName = site.getSiteName();
 
+            console.log(this.site);
             // If login was OAuth we should only reach this page if the OAuth method ID has changed.
             this.isOAuth = site.isOAuth();
 
             // Show logo instead of avatar if it's a fixed site.
             this.showSiteAvatar = this.site.avatar && !this.loginHelper.getFixedSites();
-
+            this.showSiteAvatar  = true;
             return site.getPublicConfig().then((config) => {
                 return this.sitesProvider.checkApplication(config).then(() => {
                     // Check logoURL if user avatar is not set.
@@ -109,7 +110,8 @@ export class CoreLoginReconnectPage {
                         this.showSiteAvatar = false;
                     }
                     this.logoUrl = this.loginHelper.getLogoUrl(config);
-
+                    console.log(this.logoUrl);
+                    console.log(this.showSiteAvatar );
                     this.getDataFromConfig(this.siteConfig);
                 }).catch(() => {
                     this.cancel();

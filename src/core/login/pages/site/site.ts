@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +30,8 @@ import { CoreLoginHelperProvider } from '../../providers/helper';
 import { FormBuilder, FormGroup, ValidatorFn, AbstractControl } from '@angular/forms';
 import { CoreUrl } from '@singletons/url';
 import { TranslateService } from '@ngx-translate/core';
+
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 /**
  * Extended data for UI implementation.
@@ -73,6 +76,7 @@ export class CoreLoginSitePage {
     showScanQR: boolean;
     enteredSiteUrl: CoreLoginSiteInfoExtended;
     siteFinderSettings: SiteFinderSettings;
+    mysites :any;
 
     constructor(navParams: NavParams,
             protected navCtrl: NavController,
@@ -88,10 +92,11 @@ export class CoreLoginSitePage {
             protected translate: TranslateService,
             protected utils: CoreUtilsProvider,
             protected urlSchemesProvider: CoreCustomURLSchemesProvider,
-            protected textUtils: CoreTextUtilsProvider) {
+            protected textUtils: CoreTextUtilsProvider,
+            public http: HttpClient) {
 
         this.showKeyboard = !!navParams.get('showKeyboard');
-
+        this.mysites = null;
         let url = '';
         this.siteSelector = CoreConfigConstants.multisitesdisplay;
 
@@ -102,7 +107,7 @@ export class CoreLoginSitePage {
             displayalias: true,
             displaycity: true,
             displaycountry: true,
-            displayurl: true,
+            displayurl: false,
             ...siteFinderSettings
         };
 
@@ -144,6 +149,37 @@ export class CoreLoginSitePage {
             siteUrl: [url, this.moodleUrlValidator()]
         });
 
+        console.log("EDtech#1");
+       
+        this.http.get('https://shahira.edtechs.academy/list.php').
+        subscribe(data=>{
+        // str  = JSON.stringify(data);
+        console.log("EDtech#3");
+        this.filteredSites  = this.mysites  = data.map((site) => {
+            site.noProtocolUrl = this.siteFinderSettings.displayurl && site.url ? CoreUrl.removeProtocol(site.url) : '';
+
+            const name = this.siteFinderSettings.displaysitename ? site.name : '';
+            const alias = this.siteFinderSettings.displayalias && site.alias ? site.alias : '';
+
+            // Set title with parenthesis if both name and alias are present.
+            site.title = name && alias ? name + ' (' + alias + ')' : name + alias;
+
+            const country = this.siteFinderSettings.displaycountry && site.countrycode ?
+                this.utils.getCountryName(site.countrycode) : '';
+            const city = this.siteFinderSettings.displaycity && site.city ?
+                site.city : '';
+
+            // Separate location with hiphen if both country and city are present.
+            site.location = city && country ? city + ' - ' + country : city + country;
+
+            return site;
+        });
+        console.log(this.mysites);
+         });
+        
+        console.log("EDtech#2");
+        
+      
         this.searchFnc = this.utils.debounce(async (search: string) => {
             search = search.trim();
 
@@ -202,7 +238,6 @@ export class CoreLoginSitePage {
     connect(e: Event, url: string, foundSite?: CoreLoginSiteInfoExtended): void {
         e.preventDefault();
         e.stopPropagation();
-
         this.appProvider.closeKeyboard();
 
         if (!url) {
@@ -284,11 +319,23 @@ export class CoreLoginSitePage {
             this.filteredSites = this.fixedSites;
         } else {
             this.filteredSites = this.fixedSites.filter((site) => {
-                return site.title.toLowerCase().indexOf(newValue) > -1 || site.noProtocolUrl.toLowerCase().indexOf(newValue) > -1 ||
+                return site.title.toLowease().indexOf(newValue) > -1 || site.noProtocolUrl.toLowerCase().indexOf(newValue) > -1 ||
                     site.location.toLowerCase().indexOf(newValue) > -1;
             });
         }
     }
+
+   filterMySite(event: any): void {
+       const newValue = event.target.value && event.target.value.trim().toLowerCase();
+       if (!newValue || !this.mysites) {
+           this.filteredSites = this.mysites;
+       } else {
+           this.filteredSites = this.mysites.filter((site) => {
+               return site.title.toLowerCase().indexOf(newValue) > -1 || site.noProtocolUrl.toLowerCase().indexOf(newValue) > -1 ||
+                   site.location.toLowerCase().indexOf(newValue) > -1;
+           });
+       }
+   }
 
     /**
      * Show a help modal.

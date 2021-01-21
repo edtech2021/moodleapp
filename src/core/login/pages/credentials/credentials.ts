@@ -153,7 +153,7 @@ export class CoreLoginCredentialsPage implements OnDestroy {
         const protocol = siteUrl.indexOf('http://') === 0 ? 'http://' : undefined;
 
         return this.sitesProvider.checkSite(siteUrl, protocol).then((result) => {
-
+           
             this.siteChecked = true;
             this.siteUrl = result.siteUrl;
 
@@ -188,6 +188,7 @@ export class CoreLoginCredentialsPage implements OnDestroy {
      * Treat the site configuration (if it exists).
      */
     protected treatSiteConfig(): void {
+     
         if (this.siteConfig) {
             this.siteName = CoreConfigConstants.sitename ? CoreConfigConstants.sitename : this.siteConfig.sitename;
             this.logoUrl = this.loginHelper.getLogoUrl(this.siteConfig);
@@ -195,6 +196,7 @@ export class CoreLoginCredentialsPage implements OnDestroy {
 
             const disabledFeatures = this.loginHelper.getDisabledFeatures(this.siteConfig);
             this.identityProviders = this.loginHelper.getValidIdentityProviders(this.siteConfig, disabledFeatures);
+            
             this.canSignup = this.siteConfig.registerauth == 'email' &&
                     !this.loginHelper.isEmailSignupDisabled(this.siteConfig, disabledFeatures);
             this.showForgottenPassword = !this.loginHelper.isForgottenPasswordDisabled(this.siteConfig, disabledFeatures);
@@ -205,7 +207,7 @@ export class CoreLoginCredentialsPage implements OnDestroy {
             }
         } else {
             this.authInstructions = null;
-            this.canSignup = false;
+            this.canSignup = true;
             this.identityProviders = [];
         }
     }
