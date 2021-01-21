@@ -122,7 +122,6 @@ export class CoreMainMenuMorePage implements OnDestroy {
      */
     protected loadSiteInfo(): void {
         const currentSite = this.sitesProvider.getCurrentSite();
-
         this.siteInfo = currentSite.getInfo();
         this.siteName = currentSite.getSiteName();
         this.siteUrl = currentSite.getURL();

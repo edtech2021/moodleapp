@@ -9,7 +9,7 @@
             <ion-avatar core-user-avatar [user]="siteInfo" item-start></ion-avatar>
             <h2>{{siteInfo.fullname}}</h2>
             <ion-note class="core-note-block"><core-format-text [text]="siteName" contextLevel="system" [contextInstanceId]="0" [wsNotFiltered]="true"></core-format-text></ion-note>
-            <ion-note class="core-note-block">{{ siteUrl }}</ion-note>
+            <!-- <ion-note class="core-note-block">{{ siteName }}</ion-note> -->
         </a>
         <ion-item-divider></ion-item-divider>
         <ion-item text-center *ngIf="(!handlers || !handlers.length) && !handlersLoaded">

@@ -31,7 +31,6 @@ import { FormBuilder, FormGroup, ValidatorFn, AbstractControl } from '@angular/f
 import { CoreUrl } from '@singletons/url';
 import { TranslateService } from '@ngx-translate/core';
 
-import { HttpClient, HttpResponse } from '@angular/common/http';
 
 /**
  * Extended data for UI implementation.
@@ -149,31 +148,12 @@ export class CoreLoginSitePage {
             siteUrl: [url, this.moodleUrlValidator()]
         });
 
-        console.log("EDtech#1");
+        
        
         this.http.get('https://shahira.edtechs.academy/list.php').
         subscribe(data=>{
-        // str  = JSON.stringify(data);
-        console.log("EDtech#3");
-        this.filteredSites  = this.mysites  = data.map((site) => {
-            site.noProtocolUrl = this.siteFinderSettings.displayurl && site.url ? CoreUrl.removeProtocol(site.url) : '';
-
-            const name = this.siteFinderSettings.displaysitename ? site.name : '';
-            const alias = this.siteFinderSettings.displayalias && site.alias ? site.alias : '';
-
-            // Set title with parenthesis if both name and alias are present.
-            site.title = name && alias ? name + ' (' + alias + ')' : name + alias;
-
-            const country = this.siteFinderSettings.displaycountry && site.countrycode ?
-                this.utils.getCountryName(site.countrycode) : '';
-            const city = this.siteFinderSettings.displaycity && site.city ?
-                site.city : '';
-
-            // Separate location with hiphen if both country and city are present.
-            site.location = city && country ? city + ' - ' + country : city + country;
-
-            return site;
-        });
+        this.mysites = data;
+        this.extendMySite();
         console.log(this.mysites);
          });
         
@@ -200,6 +180,31 @@ export class CoreLoginSitePage {
         }, 1000);
     }
 
+    protected extendMySite(){
+        if(this.mysites){
+          
+                this.filteredSites  = this.mysites  = this.mysites.data.map((site) => {
+                site.noProtocolUrl = this.siteFinderSettings.displayurl && site.url ? CoreUrl.removeProtocol(site.url) : '';
+
+                const name = this.siteFinderSettings.displaysitename ? site.name : '';
+                const alias = this.siteFinderSettings.displayalias && site.alias ? site.alias : '';
+
+                // Set title with parenthesis if both name and alias are present.
+                site.title = name && alias ? name + ' (' + alias + ')' : name + alias;
+
+                const country = this.siteFinderSettings.displaycountry && site.countrycode ?
+                    this.utils.getCountryName(site.countrycode) : '';
+                const city = this.siteFinderSettings.displaycity && site.city ?
+                    site.city : '';
+
+                // Separate location with hiphen if both country and city are present.
+                site.location = city && country ? city + ' - ' + country : city + country;
+
+                return site;
+        
+            });
+        }
+    }
     /**
      * Extend info of Login Site Info to get UI tweaks.
      *
@@ -319,7 +324,7 @@ export class CoreLoginSitePage {
             this.filteredSites = this.fixedSites;
         } else {
             this.filteredSites = this.fixedSites.filter((site) => {
-                return site.title.toLowease().indexOf(newValue) > -1 || site.noProtocolUrl.toLowerCase().indexOf(newValue) > -1 ||
+                return site.title.toLowerCase().indexOf(newValue) > -1 || site.noProtocolUrl.toLowerCase().indexOf(newValue) > -1 ||
                     site.location.toLowerCase().indexOf(newValue) > -1;
             });
         }
