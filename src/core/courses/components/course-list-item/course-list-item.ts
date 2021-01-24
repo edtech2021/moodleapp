@@ -63,6 +63,11 @@ export class CoreCoursesCourseListItemComponent implements OnInit {
                         name: this.translate.instant('core.courses.paypalaccepted'),
                         img: 'assets/img/icons/paypal.png'
                     });
+                }else if (instance === 'fawry') {
+                    this.course.enrollment.push({
+                        name: 'Fawry',
+                        img: 'assets/img/icons/fawry.png'
+                    });
                 }
             });
 

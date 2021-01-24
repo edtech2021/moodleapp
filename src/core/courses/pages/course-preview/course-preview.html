@@ -53,6 +53,12 @@
                 <p>{{ 'core.paymentinstant' | translate }}</p>
                 <button ion-button block margin-top (click)="paypalEnrol()">{{ 'core.courses.sendpaymentbutton' | translate }}</button>
             </ion-item>
+            <ion-item text-wrap *ngIf="!isEnrolled && fawryEnabled" detail-none>
+                <h2>Fawry</h2>
+                <p>Fawry</p>
+                <button ion-button block margin-top (click)="fawryEnrol()">Fawry Pay</button>
+            </ion-item>
+            
             <ion-item *ngIf="!isEnrolled && !selfEnrolInstances.length && !paypalEnabled">
                 <p>{{ 'core.courses.notenrollable' | translate }}</p>
             </ion-item>

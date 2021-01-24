@@ -28,9 +28,7 @@
         </div>
 
         <div *ngIf="step == 1" class="core-login-onboarding-step">
-            <p class="core-login-onboarding-text">
-                {{ 'core.login.onboardingtoconnect' | translate }}
-            </p>
+          
             <a ion-button block (click)="skip($event)" margin-bottom color="light">{{ 'core.login.onboardingialreadyhaveasite' | translate }}</a>
             <a ion-button block (click)="next($event)" margin-bottom>{{ 'core.login.onboardingineedasite' | translate }}</a>
         </div>
@@ -42,7 +40,7 @@
                 <li><core-icon name="fa-check-circle-o"></core-icon> {{ 'core.login.onboardingprovidefeedback' | translate }}</li>
             </ul>
 
-            <p>  write us at <a ion-button block  href="mailto:edtechacademy2021@gmail.com" margin-bottom>edtechacademy2021@gmail.com</a> </p>
+            <p>  write us at <a ion-button block  href="mailto:contact@edtechs.academy" margin-bottom>contact@edtechs.academy</a> </p>
         </div>
     </div>
 </ion-content>

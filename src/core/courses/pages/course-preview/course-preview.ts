@@ -39,6 +39,7 @@ export class CoreCoursesCoursePreviewPage implements OnDestroy {
     canAccessCourse = true;
     selfEnrolInstances: any[] = [];
     paypalEnabled: boolean;
+    fawryEnabled: boolean;
     dataLoaded: boolean;
     avoidOpenCourse = false;
     prefetchCourseData = {
@@ -55,7 +56,9 @@ export class CoreCoursesCoursePreviewPage implements OnDestroy {
     protected enrollmentMethods: any[];
     protected waitStart = 0;
     protected enrolUrl: string;
+    protected fawryUrl: string;
     protected paypalReturnUrl: string;
+    protected fawryReturnUrl: string;
     protected isMobile: boolean;
     protected isDesktop: boolean;
     protected selfEnrolModal: Modal;
@@ -105,10 +108,14 @@ export class CoreCoursesCoursePreviewPage implements OnDestroy {
             currentSiteUrl = currentSite && currentSite.getURL();
 
         this.paypalEnabled = this.course.enrollmentmethods && this.course.enrollmentmethods.indexOf('paypal') > -1;
+        this.fawryEnabled = this.course.enrollmentmethods && this.course.enrollmentmethods.indexOf('fawry') > -1;
         this.guestWSAvailable = this.coursesProvider.isGuestWSAvailable();
         this.enrolUrl = this.textUtils.concatenatePaths(currentSiteUrl, 'enrol/index.php?id=' + this.course.id);
+        this.fawryUrl = this.textUtils.concatenatePaths(currentSiteUrl, 'enrol/fawry/fwp.php?courseid=' + this.course.id);
         this.courseUrl = this.textUtils.concatenatePaths(currentSiteUrl, 'course/view.php?id=' + this.course.id);
         this.paypalReturnUrl = this.textUtils.concatenatePaths(currentSiteUrl, 'enrol/paypal/return.php');
+        this.fawryReturnUrl = this.textUtils.concatenatePaths(currentSiteUrl, 'enrol/fawry/fw.php');
+        
         if (this.course.overviewfiles && this.course.overviewfiles.length > 0) {
             this.course.courseImage = this.course.overviewfiles[0].fileurl;
         }
@@ -338,6 +345,64 @@ export class CoreCoursesCoursePreviewPage implements OnDestroy {
                     this.refreshData();
                 });
             }
+        });
+    }
+
+    fawryEnrol(): void {
+        let window,
+            hasReturnedFromFawry = false,
+            inAppLoadSubscription,
+            inAppFinishSubscription,
+            inAppExitSubscription,
+            appResumeSubscription;
+
+        const urlLoaded = (event): void => {
+                if (event.url.indexOf(this.fawryReturnUrl) != -1) {
+                    hasReturnedFromFawry = true;
+                } else if (event.url.indexOf(this.courseUrl) != -1 && hasReturnedFromFawry) {
+                    // User reached the course index page after returning from PayPal, close the InAppBrowser.
+                    inAppClosed();
+                    window.close();
+                }
+            },
+            inAppClosed = (): void => {
+                // InAppBrowser closed, refresh data.
+                unsubscribeAll();
+
+                if (!this.dataLoaded) {
+                    return;
+                }
+                this.dataLoaded = false;
+                this.refreshData();
+            },
+            unsubscribeAll = (): void => {
+                inAppLoadSubscription && inAppLoadSubscription.unsubscribe();
+                inAppFinishSubscription && inAppFinishSubscription.unsubscribe();
+                inAppExitSubscription && inAppExitSubscription.unsubscribe();
+                appResumeSubscription && appResumeSubscription.unsubscribe();
+            };
+
+        // Open the enrolment page in InAppBrowser.
+        this.sitesProvider.getCurrentSite().openInAppWithAutoLogin(this.fawryUrl,{location : 'no', 
+        hidden : 'no', 
+        zoom : 'no',
+        hideurlbar:'yes'
+    }).then((w) => {
+            window = w;
+
+            if (this.isDesktop || this.isMobile) {
+                // Observe loaded pages in the InAppBrowser to check if the enrol process has ended.
+                inAppLoadSubscription = window.on('loadstart').subscribe((event) => {
+                    // Execute the callback in the Angular zone, so change detection doesn't stop working.
+                    this.zone.run(() => urlLoaded(event));
+                });
+                // Observe window closed.
+                inAppExitSubscription = window.on('exit').subscribe(() => {
+                    // Execute the callback in the Angular zone, so change detection doesn't stop working.
+                    this.zone.run(inAppClosed);
+                });
+            }
+
         });
     }
 

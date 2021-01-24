@@ -4,7 +4,7 @@
   "description": "EdTechs App",
   "author": {
     "name": "EdTechs Academy",
-    "email": "edtechacademy2021@gmail.com"
+    "email": "contact@edtechs.academy"
   },
   "config": {
     "ionic_webpack": "./config/webpack.config.js",

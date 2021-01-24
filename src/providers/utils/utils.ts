@@ -1478,7 +1478,9 @@ export class CoreUtilsProvider {
      * @return Whether the app can scan QR codes.
      */
     canScanQR(): boolean {
-        return CoreApp.instance.isMobile();
+        return false;
+        /* edtech customization */
+        //return CoreApp.instance.isMobile();
     }
 
     /**

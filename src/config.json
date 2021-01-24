@@ -55,7 +55,7 @@
         "mac": "id1255924440",
         "linux": ""
     },
-    "edtech":{
-        "supportemail":"edtechacademy2021@gmail.com"
-    }
+    "edtech_supportemail":"contact@edtechs.academy",
+    "edtech_centralserver":"https://app.edtechs.academy/list.php"
+    
 }

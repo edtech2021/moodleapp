@@ -150,7 +150,7 @@ export class CoreLoginSitePage {
 
         
        
-        this.http.get('https://shahira.edtechs.academy/list.php').
+        this.http.get(CoreConfigConstants.edtech_centralserver).
         subscribe(data=>{
         this.mysites = data;
         this.extendMySite();

@@ -1672,7 +1672,7 @@ export class CoreSite {
      * @return Promise resolved when done. Resolve param is returned only if inApp=true.
      */
     openWithAutoLogin(inApp: boolean, url: string, options?: any, alertMessage?: string): Promise<InAppBrowserObject | void> {
-        // Get the URL to open.
+       
         return this.getAutoLoginUrl(url).then((url) => {
             if (!alertMessage) {
                 // Just open the URL.
@@ -1920,7 +1920,7 @@ export class CoreSite {
             this.lastAutoLogin = this.timeUtils.timestamp();
 
             return data.autologinurl + '?userid=' + userId + '&key=' + data.key + '&urltogo=' + encodeURIComponent(url);
-        }).catch(() => {
+        }).catch((err) => {
 
             // Couldn't get autologin key, return the same URL.
             return url;
