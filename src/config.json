@@ -56,6 +56,6 @@
         "linux": ""
     },
     "edtech_supportemail":"contact@edtechs.academy",
-    "edtech_centralserver":"https://app.edtechs.academy/list.php"
+    "edtech_centralserver":"https://centralserver.edtechs.academy/api/list/c054ebe171b156d40adbc95fb461c75b"
     
 }

@@ -363,6 +363,10 @@ export class CoreCoursesCoursePreviewPage implements OnDestroy {
                     // User reached the course index page after returning from PayPal, close the InAppBrowser.
                     inAppClosed();
                     window.close();
+                }else if (event.url.indexOf(this.enrolUrl) != -1 ) {
+                    // User reached the course index page after returning from PayPal, close the InAppBrowser.
+                    inAppClosed();
+                    window.close();
                 }
             },
             inAppClosed = (): void => {
@@ -385,7 +389,7 @@ export class CoreCoursesCoursePreviewPage implements OnDestroy {
         // Open the enrolment page in InAppBrowser.
         this.sitesProvider.getCurrentSite().openInAppWithAutoLogin(this.fawryUrl,{location : 'no', 
         hidden : 'no', 
-        zoom : 'no',
+        zoom : 'yes',
         hideurlbar:'yes'
     }).then((w) => {
             window = w;
