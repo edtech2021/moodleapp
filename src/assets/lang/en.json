@@ -1831,6 +1831,7 @@
     "core.login.reconnect": "Reconnect",
     "core.login.reconnectdescription": "Your authentication token is invalid or has expired. You have to reconnect to the site.",
     "core.login.reconnectssodescription": "Your authentication token is invalid or has expired. You have to reconnect to the site. You need to log in to the site in a browser window.",
+    "core.login.regsuccess": "Your account has been created Successfully!. To continue, please login.",
     "core.login.resendemail": "Resend email",
     "core.login.searchby": "Search by:",
     "core.login.security_question": "Security question",

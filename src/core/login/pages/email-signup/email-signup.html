@@ -132,13 +132,17 @@
                     <core-recaptcha [publicKey]="settings.recaptchapublickey" [model]="captcha" [siteUrl]="siteUrl"></core-recaptcha>
                 </ion-item>
             </ng-container>
-
+            <ion-item text-wrap>
+                <p>
+                   By Creating the account, you agree to the policy mentioned on Store. 
+                   <!-- <a [href]="settings.sitepolicy" core-link capture="false">{{ 'core.login.policyagreementclick' | translate }}</a> -->
+                </p>
+            </ion-item>
             <!-- Site policy (if any). -->
             <ng-container *ngIf="settings.sitepolicy">
                 <ion-item-divider text-wrap>{{ 'core.login.policyagreement' | translate }}</ion-item-divider>
                 <ion-item text-wrap>
                     <p>
-                       By Creating the account, you agree to the policy mentioned on Store. 
                        <!-- <a [href]="settings.sitepolicy" core-link capture="false">{{ 'core.login.policyagreementclick' | translate }}</a> -->
                     </p>
                 </ion-item>

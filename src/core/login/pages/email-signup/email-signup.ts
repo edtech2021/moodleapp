@@ -289,7 +289,7 @@ export class CoreLoginEmailSignupPage {
                         this.domUtils.triggerFormSubmittedEvent(this.signupFormElement, true);
 
                         // Show alert and ho back.
-                        const message = this.translate.instant('core.login.emailconfirmsent', { $a: params.email });
+                        const message = this.translate.instant('core.login.regsuccess', { $a: params.email });
                         this.domUtils.showAlert(this.translate.instant('core.success'), message);
                         this.navCtrl.pop();
                     } else {
