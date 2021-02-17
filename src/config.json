@@ -50,9 +50,9 @@
     "ioswebviewscheme": "moodleappfs",
     "appstores": {
         "android": "com.edtechs.edtechsmobile",
-        "ios": "id633359593",
+        "ios": "id1553516696",
         "windows": "",
-        "mac": "id1255924440",
+        "mac": "",
         "linux": ""
     },
     "edtech_supportemail":"contact@edtechs.academy",

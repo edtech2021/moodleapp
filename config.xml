@@ -36,7 +36,7 @@
     <preference name="load-url-timeout" value="60000" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="15000" />
-    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="UISupportsDocumentBrowser" value="true" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="android-minSdkVersion" value="22" />
     <preference name="android-targetSdkVersion" value="29" />
@@ -259,6 +259,7 @@
             <string>We need photo library access to get pictures from there so you can attach them as part of your submissions.</string>
         </edit-config>
         <edit-config mode="merge" parent="UISupportsDocumentBrowser" target="*-Info.plist">
+            
             <true />
         </edit-config>
         <edit-config mode="merge" parent="CFBundleShortVersionString" target="*-Info.plist">
