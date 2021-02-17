@@ -1,36 +1,42 @@
 {
   "project_info": {
-    "project_number": "820830366870",
-    "project_id": "edtechsapp",
-    "storage_bucket": "edtechsapp.appspot.com"
+    "project_number": "",
+    "firebase_url": "",
+    "project_id": "",
+    "storage_bucket": ""
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:820830366870:android:ea8485e7130fec368ba6b7",
+        "mobilesdk_app_id": "1:111111111111:android:1111111111111111",
         "android_client_info": {
-          "package_name": "com.edtechs.edtechsmobile"
+          "package_name": "com.edtechs.ostazmobile"
         }
       },
       "oauth_client": [
         {
-          "client_id": "820830366870-g9ms23kps5m3oj5f4b238ekj5iasnk1d.apps.googleusercontent.com",
+          "client_id": "",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD1VDYIBm4TaxkcEmrEtAChT4jSvrBg4-w"
+          "current_key": ""
+        },
+        {
+          "current_key": ""
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 1
+        },
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "820830366870-g9ms23kps5m3oj5f4b238ekj5iasnk1d.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
         }
       }
     }

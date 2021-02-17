@@ -1,5 +1,5 @@
 {
-    "app_id": "com.edtechs.edtechsmobile",
+    "app_id": "com.edtechs.ostazmobile",
     "appname": "EdTechs Mobile",
     "desktopappname": "EdTechs Desktop",
     "versioncode": 3940,
@@ -49,13 +49,13 @@
     "forceLoginLogo": false,
     "ioswebviewscheme": "moodleappfs",
     "appstores": {
-        "android": "com.edtechs.edtechsmobile",
+        "android": "com.edtechs.ostazmobile",
         "ios": "id1553516696",
         "windows": "",
         "mac": "",
         "linux": ""
     },
     "edtech_supportemail":"contact@edtechs.academy",
-    "edtech_centralserver":"https://centralserver.edtechs.academy/api/list/c054ebe171b156d40adbc95fb461c75b"
+    "edtech_centralserver":"https://ostazcentralserver.edtechs.academy/api/list/c054ebe171b156d40adbc95fb461c75b"
     
 }

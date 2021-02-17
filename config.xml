@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="39400" id="com.edtechs.edtechsmobile" ios-CFBundleVersion="3.9.4.0" version="3.9.4" versionCode="39400" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="39400" id="com.edtechs.ostazmobile" ios-CFBundleVersion="3.9.4.0" version="3.9.4" versionCode="39400" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>EdTechs</name>
     <description>EdTechs app</description>
     <author email="edtechacademy2021@gmail.com" href="http://edtechs.academy">EdTechs team</author>
@@ -259,7 +259,6 @@
             <string>We need photo library access to get pictures from there so you can attach them as part of your submissions.</string>
         </edit-config>
         <edit-config mode="merge" parent="UISupportsDocumentBrowser" target="*-Info.plist">
-            
             <true />
         </edit-config>
         <edit-config mode="merge" parent="CFBundleShortVersionString" target="*-Info.plist">
