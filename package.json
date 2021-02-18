@@ -180,8 +180,8 @@
   },
   "cordova": {
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ],
     "plugins": {
       "com-darryncampbell-cordova-plugin-intent": {},
