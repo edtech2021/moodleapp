@@ -148,6 +148,7 @@
     "@types/node": "^8.10.59",
     "@types/promise.prototype.finally": "^2.0.4",
     "acorn": "^5.7.4",
+    "cordova-ios": "^6.2.0",
     "cordova-plugin-firebase-analytics": "^5.0.0",
     "cordova-support-android-plugin": "^1.0.2",
     "cordova-support-google-services": "^1.2.1",
@@ -179,7 +180,8 @@
   },
   "cordova": {
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ],
     "plugins": {
       "com-darryncampbell-cordova-plugin-intent": {},

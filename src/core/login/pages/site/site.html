@@ -14,7 +14,7 @@
         <div text-center padding margin-bottom [class.hidden]="hasSites || enteredSiteUrl" class="core-login-site-logo">
             <img src="assets/img/login_logo.png" class="avatar-full login-logo" role="presentation">
         </div>
-        <ion-searchbar [(ngModel)]="filter" (ionInput)="filterMySite($event)" (ionCancel)="filterMySite()" [placeholder]="'core.login.findyoursite' | translate"></ion-searchbar>
+        <!--<ion-searchbar [(ngModel)]="filter" (ionInput)="filterMySite($event)" (ionCancel)="filterMySite()" [placeholder]="'core.login.findyoursite' | translate"></ion-searchbar>-->
                        
         <form ion-list [formGroup]="siteForm" (ngSubmit)="connect($event, siteForm.value.siteUrl)" *ngIf="!fixedSites" #siteFormEl>
             <!-- Form to input the site URL if there are no fixed sites. -->
@@ -29,7 +29,7 @@
                     <!-- <ion-label stacked><h2>{{ 'core.login.siteaddress' | translate }}</h2></ion-label>
                     <ion-input name="url" placeholder="{{ 'core.login.siteaddressplaceholder' | translate }}" formControlName="siteUrl" [core-auto-focus]="showKeyboard && !showScanQR" (ionChange)="searchSite($event, siteForm.value.siteUrl)"></ion-input> -->
                     <ion-list *ngIf="siteSelector == 'list'">
-                        <ion-item no-lines><h2 class="item-heading">Instructor List</h2></ion-item>
+                        <!--<ion-item no-lines><h2 class="item-heading">Instructor List</h2></ion-item>-->
                         <ion-item *ngFor="let site of filteredSites" (click)="connect($event, site.url)" [title]="site.name" detail-push>
                             <ion-thumbnail item-start *ngIf="siteFinderSettings.displayimage">
                                 <img [src]="site.imageurl" *ngIf="site.imageurl" onError="this.src='assets/icon/icon.png'">
