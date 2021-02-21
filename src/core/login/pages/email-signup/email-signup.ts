@@ -145,6 +145,7 @@ export class CoreLoginEmailSignupPage {
     protected async fetchData(): Promise<void> {
         try {
             // Get site config.
+           
             this.siteConfig = await this.sitesProvider.getSitePublicConfig(this.siteUrl);
             this.signupUrl = this.textUtils.concatenatePaths(this.siteConfig.httpswwwroot, 'login/signup.php');
 

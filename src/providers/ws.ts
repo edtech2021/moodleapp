@@ -582,7 +582,8 @@ export class CoreWSProvider {
 
         return promise.then((response: HttpResponse<any>) => {
             let data = response.body;
-
+            // chandra api debug*
+//console.log(response);
             // Some moodle web services return null.
             // If the responseExpected value is set then so long as no data is returned, we create a blank object.
             if (!data && !preSets.responseExpected) {
